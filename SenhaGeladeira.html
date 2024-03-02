@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação de Idade</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        select, input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Verificação de Idade</h2>
+    <form id="ageForm">
+        <label for="fullName">Nome Completo:</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Seu Nome Completo" required>
+
+        <label for="day">Dia:</label>
+        <select id="day" name="day" required>
+            <option value="">Selecione o Dia</option>
+            <!-- Opções dos dias aqui -->
+	        <option value="1">1</option>
+    		<option value="2">2</option>
+            	<option value="3">3</option>
+            	<option value="4">4</option>
+            	<option value="5">5</option>
+            	<option value="6">6</option>
+            	<option value="7">7</option>
+            	<option value="8">9</option>
+           	<option value="9">9</option>
+            	<option value="10">10</option>
+            	<option value="11">11</option>
+            	<option value="12">12</option>
+	    	<option value="13">13</option>
+	    	<option value="14">14</option>
+		<option value="15">15</option>
+		<option value="16">16</option>
+		<option value="17">17</option>
+		<option value="18">18</option>
+		<option value="19">19</option>
+		<option value="20">20</option>
+		<option value="21">21</option>
+		<option value="22">22</option>
+		<option value="23">23</option>
+		<option value="24">24</option>
+		<option value="25">25</option>
+		<option value="26">26</option>
+		<option value="27">27</option>
+		<option value="28">28</option>
+		<option value="29">29</option>
+		<option value="30">30</option>
+		<option value="31">31</option>
+        </select>
+        
+        <label for="month">Mês:</label>
+        <select id="month" name="month" required>
+            <option value="">Selecione o Mês</option>
+	    <option value="1">Janeiro</option>
+            <option value="2">Fevereiro</option>
+            <option value="3">Março</option>
+            <option value="4">Abril</option>
+            <option value="5">Maio</option>
+            <option value="6">Junho</option>
+            <option value="7">Julho</option>
+            <option value="8">Agosto</option>
+            <option value="9">Setembro</option>
+            <option value="10">Outubro</option>
+            <option value="11">Novembro</option>
+            <option value="12">Dezembro</option>
+            <!-- Opções dos meses aqui -->
+        </select>
+        
+        <label for="year">Ano:</label>
+        <input type="number" id="year" name="year" placeholder="Ano" min="1900" max="9999" required>
+        
+        <button type="submit">Verificar Idade</button>
+    </form>
+    
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('ageForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var fullName = document.getElementById('fullName').value;
+            var day = parseInt(document.getElementById('day').value);
+            var month = parseInt(document.getElementById('month').value) - 1; // JavaScript months are zero-based
+            var year = parseInt(document.getElementById('year').value);
+            var birthdate = new Date(year, month, day);
+            var eighteenYearsAgo = new Date();
+            eighteenYearsAgo.setFullYear(eighteenYearsAgo.getFullYear() - 18);
+            if (birthdate <= eighteenYearsAgo) {
+                document.getElementById('result').innerHTML = "<p style='font-size: larger;'>A Senha da Geladeira de Alcoólicos<br>2023#</p>";
+                // Coloque aqui o código que deseja liberar
+            } else {
+                document.getElementById('result').innerHTML = "<p>Desculpe, você deve ter pelo menos 18 anos para acessar o código.</p>";
+            }
+        });
+    </script>
+</body>
+</html>
